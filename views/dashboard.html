@@ -1,0 +1,216 @@
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+</script>
+
+<style>
+    .custom-file-upload {
+        border: 1px solid #00bcd4;
+        display: inline-block;
+        padding: 10px 50px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: -3px;
+    }
+
+    input[type="file"] {
+        display: none;
+        font-family: inherit;
+    }
+    input[type="file"]:focus {
+        display: none;
+        font-family: inherit;
+        border: 1px solid #ffba22;    
+    }
+
+    .card-dash{
+        background: #eeeeee; 
+        border-radius: 6px; 
+        margin-right: 15px; 
+        width: 30.333333%;
+    }
+
+    .icone-dash{
+        background: #fea320;
+        border-radius: 50%;s
+        display: block;
+        float: left;
+        margin: 10px 15px 10px 0px;
+        width: 75px;
+        height: 75px;
+        line-height: 70px;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .icon-dash{
+        font-size: 55px; 
+        color: white; 
+        margin-top: 10px;
+    }
+
+</style>
+
+<div>
+
+    <div class="main main-raised" style="padding-bottom:40px; margin-bottom: 40px">
+
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">{{texto}}</b></h4>
+            </div>
+
+            <div class="card-content">
+
+                <div class="row" style="margin-left: 50px;">
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash">
+                            <i class="material-icons icon-dash">plus_one</i>
+                        </span>
+                        <div ng-controller="matriculaCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listagemPre.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Inscrições</span>
+                            </h3>
+                        </div>                        
+                    </div>
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #20b5fe;">
+                            <i class="material-icons icon-dash">mail_outline</i>
+                        </span>
+                        <div ng-controller="contatoCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listagemCont.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Mensagens</span>
+                            </h3>
+                        </div>                        
+                    </div>
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #fe2020;">
+                            <i class="material-icons icon-dash">perm_media</i>
+                        </span>
+                        <div ng-controller="sliderCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listaSlider.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Slider</span>
+                            </h3>
+                        </div>                        
+                    </div>
+                    
+                </div>
+
+                <div class="row" style="margin-left: 50px; margin-top: 20px;">
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #30c716;">
+                            <i class="material-icons icon-dash">collections</i>
+                        </span>
+                        <div ng-controller="galeriaEstruturaCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listaGaleria.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Galeria</span>
+                            </h3>
+                        </div>                        
+                    </div>
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #c920fe;">
+                            <i class="material-icons icon-dash">cake</i>
+                        </span>
+                        <div ng-controller="eventoCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listaEvento.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Eventos</span>
+                            </h3>
+                        </div>                        
+                    </div>
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #feb120;">
+                            <i class="material-icons icon-dash">public</i>
+                        </span>
+                        <div ng-controller="noticiaCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listaNoticia.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Notícias</span>
+                            </h3>
+                        </div>                        
+                    </div>
+                    
+                </div>
+
+                <div class="row" style="margin-left: 50px; margin-top: 20px;">
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #20fee1;">
+                            <i class="material-icons icon-dash">room_service</i>
+                        </span>
+                        <div ng-controller="cardapioCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listaCardapio.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Cardápio</span>
+                            </h3>
+                        </div>                        
+                    </div>
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #254ce4;">
+                            <i class="material-icons icon-dash">today</i>
+                        </span>
+                        <div ng-controller="calendarioCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listaCalendar.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Calendário Escolar</span>
+                            </h3>
+                        </div>                        
+                    </div>
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #fe20e1;">
+                            <i class="material-icons icon-dash">picture_as_pdf</i>
+                        </span>
+                        <div ng-controller="curriculoCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listaCur.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Currículo</span>
+                            </h3>
+                        </div>                        
+                    </div>
+                    
+                </div>
+
+                <div class="row" style="margin-left: 50px; margin-top: 20px;">
+
+                    <div class="col-sm-4 card-dash">
+                        <span class="icone-dash" style="background: #6afe20;">
+                            <i class="material-icons icon-dash">videocam</i>
+                        </span>
+                        <div ng-controller="videoCtrl">
+                            <h3>
+                                <span style="color: #8b919c">{{listagemVideo.length}}</span>
+                                <br>                           
+                                <span style="font-size: 20px;">Vídeos</span>
+                            </h3>
+                        </div>                        
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

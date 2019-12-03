@@ -1,0 +1,78 @@
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+</script>
+
+<style>
+    .custom-file-upload {
+        border: 1px solid #00bcd4;
+        display: inline-block;
+        padding: 10px 50px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: -3px;
+    }
+
+    input[type="file"] {
+        display: none;
+        font-family: inherit;
+    }
+    input[type="file"]:focus {
+        display: none;
+        font-family: inherit;
+        border: 1px solid #ffba22;    
+    }
+</style>
+
+<div>
+
+    <!-- ADICIONAR SLIDER -->
+    <button  type="button" class="float-button btn btn-info btn-round btn-just-icon" ng-click="showForm = !showForm">
+        <i class="material-icons" data-toggle="tooltip" title="Adicionar Cardápio">add</i>
+    </button>
+    
+    <div ng-show="showForm" class="animated fadeInLeft" id="formulario" style="margin-left: 15px; margin-bottom: 50px;">
+        <div class="row">
+            <div class="col-sm-4" style="background: white; border-radius: 6px;">
+                <form>
+                    <div class="form-group">
+                        <label class="custom-file-upload">
+                            <input type="file" id="imagemCardapio"/>
+                            Adicionar Imagem
+                        </label>
+                    </div>
+                    <div class="form-group text-right" ng-click="showForm = !showForm">
+                        <button type="button" class="btn btn-primary" ng-click="insertCardapio(novoCardapio)">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /ADICIONAR SLIDER -->
+
+    <div class="main main-raised" style="padding-bottom:40px; margin-bottom: 40px">
+
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">{{texto}}</b></h4>
+            </div>
+
+            <div class="card-content col-sm-2"  ng-repeat="lista in listaCardapio">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div style="text-align: center;">
+                            <img src="{{baseUrlImagem}}/cardapio/{{lista.imagem}}" alt="" style="width: 320px; border-radius: 6px;">
+                        </div>
+                        <div  class="text-center">
+                            <button class="btn btn-danger btn-sm btn-delete" ng-click="deletaCardapio(lista)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

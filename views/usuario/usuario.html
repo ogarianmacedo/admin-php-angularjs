@@ -1,0 +1,132 @@
+<style type="text/css">    
+    .aluno-avatar{
+        height: 44px!important;
+        width: 44px!important;
+        background-position: center;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 1px solid #ddd;
+        margin-right: 10px;
+    }
+    .media-body {
+        width: 0;
+    }
+    
+    .float-button{
+        width: 60px;
+        height: 60px;
+        position: fixed;
+        bottom: 65px;
+        right: 45px;
+    }
+</style>
+
+<div class="row animated fadeInLeft" ng-show="showForm">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-content">
+                <h4 class="title">Editar Usuário</h4>
+                <form>
+                    <div class="row">
+                        <div class="col-md-12" style="z-index: 1;">
+
+                            <div class="form-group is-empty">
+                                <label class="control-label">Nome</label>
+                                <input type="text" ng-model="novoUsuario.nome" class="form-control">
+                            </div>
+
+                            <div class="form-group is-empty">
+                                <label class="control-label">E-mail</label>
+                                <input type="email" ng-model="novoUsuario.email" class="form-control">
+                            </div>
+
+                            <div class="form-group is-empty">                                
+                                <label class="control-label">Senha</label>
+                                <input type="password" ng-model="novoUsuario.senha" class="form-control">
+                            </div>
+
+                            <div class="form-group is-empty">
+                                <label class="control-label">Confirmar Senha</label>
+                                <input type="password" ng-model="novoUsuario.confirmaSenha" class="form-control">
+                            </div>
+
+                            <button  type="button" ng-click="editarUsuario(novoUsuario);" class="btn btn-warning ">
+                                <i class="material-icons">edit</i> Alterar
+                            </button>
+                        </div>
+
+                    </div>                  
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">Usuários </h4>
+            </div>
+            <div class="card-content">
+                <table class="table table-hover">
+                    <thead class="text-warning">
+                        <tr>
+                            <!-- <th></th> -->
+                            <th>Nome</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="col in listaColaborador">
+                            <!-- <td>
+                                <img src="{{baseUrlImagem}}/usuario/{{col.imagem}}" alt="" style="width: 80px;border-radius: 6px;">
+                            </td> -->
+                            <td>
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h4 class="media-heading" style="font-size: 14px; font-weight: 600; margin: 0px;">{{col.nome}}</h4>
+                                        <p style="margin: 0px;">{{col.email}}</p>
+                                    </div>
+                                </div>                                
+                            </td>
+                            <td>
+                                <a href="" ng-click="deletaUsuario(col)">Excluir</a>
+                                 | 
+                                <a href="" ng-click="exibirEditar(col)">Editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+        
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Excluir</h4>
+          </div>
+
+          <div class="modal-body">
+            <div id="tx_confirm_excluir"></div>
+            <input type="hidden" id="id_produto_excluir"/>
+            <div class="row">
+              <br>
+              <button ng-click="excluiProduto()" class="btn btn-default">Excluir</button>
+              <button ng-click="closeModalExcluir()" class="btn btn-default" data-dismiss="modal">Cancelar</button>  
+            </div>
+          </div>
+        </div>
+
+    </div>
+</div>
+
+<button ng-show="hideAdd"  type="button" ng-click="novoColaborador();" class="float-button btn btn-info btn-round btn-just-icon">
+    <i class="material-icons">add</i>
+</button>
+

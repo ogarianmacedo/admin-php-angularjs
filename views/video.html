@@ -1,0 +1,98 @@
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+</script>
+
+<style>
+    .custom-file-upload {
+        border: 1px solid #00bcd4;
+        display: inline-block;
+        padding: 10px 50px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: -3px;
+    }
+
+    input[type="file"] {
+        display: none;
+        font-family: inherit;
+    }
+    input[type="file"]:focus {
+        display: none;
+        font-family: inherit;
+        border: 1px solid #ffba22;    
+    }
+</style>
+
+<div>
+
+    <!-- ADICIONAR SLIDER -->
+    <button  type="button" class="float-button btn btn-info btn-round btn-just-icon" ng-click="showFormulario()">
+        <i class="material-icons" data-toggle="tooltip" title="Adicionar Vídeo">add</i>
+    </button>
+    
+    <div ng-show="showForm" class="animated fadeInLeft" id="formulario" style="margin-left: 15px; margin-bottom: 50px;">
+        <div class="row">
+            <div class="col-sm-4" style="background: white; border-radius: 6px;">
+                <form>
+                    <div class="form-group">
+                        <label for="">Título</label>
+                        <input type="text" class="form-control" ng-model="novoVideo.titulo">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Url</label>
+                        <input type="text" class="form-control" ng-model="novoVideo.url">
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" class="btn btn-primary" ng-click="insertVideo(novoVideo)" ng-hide="novoVideo.editando">Salvar</button>
+                        <button type="button" class="btn btn-warning" ng-click="editarVideo(novoVideo)" ng-show="novoVideo.editando">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /ADICIONAR SLIDER -->
+
+    <div class="main main-raised" style="padding-bottom:40px; margin-bottom: 40px">
+
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">{{texto}}</b></h4>
+            </div>
+
+            <div class="card-content">
+                
+                <table class="table">
+                    <thead class="text-warning">
+                        <tr>
+                            <th width="400">Vídeo</th>
+                            <th>Título</th>
+                            <th class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="lista in listagemVideo">
+                            <td id="td_video_{{$index}}" width="400">
+                     
+                            </td>
+                            <td>
+                                {{lista.titulo}}
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-danger btn-sm btn-delete" ng-click="deletaVideo(lista)">
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                                <button class="btn btn-warning btn-sm btn-delete" ng-click="exibirEditar(lista)">
+                                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>

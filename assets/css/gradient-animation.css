@@ -1,0 +1,77 @@
+.gradiente-animation{
+    background-size: 3000% 100%!important;
+    -webkit-animation: materialGradiente 20s linear infinite;
+    -moz-animation: materialGradiente 20s linear infinite;
+    -o-animation: materialGradiente 20s linear infinite;
+    animation: materialGradiente 20s linear infinite;
+
+}
+
+.m-grid-red{
+    background: linear-gradient(65deg, #F44336, #C62828,  #F44336, #C62828); 
+}
+
+.m-grid-pink{
+    background: linear-gradient(65deg, #E91E63, #AD1457,  #E91E63, #AD1457);
+}
+
+.m-grid-purple{
+    background: linear-gradient(65deg, #9c27b0, #6a1b9a,  #9c27b0, #6a1b9a);
+}
+
+.m-grid-blue-dark{
+    background: linear-gradient(65deg, #3f51b5, #283593,  #3f51b5, #283593);
+}
+
+.m-grid-blue-light{
+    background: linear-gradient(65deg, #03A9F4, #0277bd,  #03A9F4, #0277bd);
+}
+
+.m-grid-green-dark{
+    background: linear-gradient(65deg, #009688, #00695c,  #009688, #00695c);
+}
+
+.m-grid-green-light{
+    background: linear-gradient(65deg, #8bc34a, #558b2f,  #8bc34a, #558b2f);
+}
+
+.m-grid-orange-dark{
+    background: linear-gradient(65deg, #ff5722, #D84315,  #ff5722, #D84315);
+}
+
+.m-grid-orange-light{
+    background: linear-gradient(65deg, #ffc107, #FF8F00,  #ffc107, #FF8F00);
+}
+
+.m-grid-brown{
+    background: linear-gradient(65deg, #795548, #4e342e,  #795548, #4e342e);
+}
+
+.m-grid-gray-light{
+    background: linear-gradient(65deg, #9e9e9e, #424242,  #9e9e9e, #424242);
+}
+
+.m-grid-gray-dark{
+    background: linear-gradient(65deg, #607d8b, #37474F,  #607d8b, #37474F);
+}
+
+@-webkit-keyframes materialGradiente {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes materialGradiente {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes materialGradiente {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes materialGradiente { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}

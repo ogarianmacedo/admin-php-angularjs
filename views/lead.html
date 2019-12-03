@@ -1,0 +1,83 @@
+<style type="text/css">    
+.aluno-avatar{
+	height: 44px!important;
+	width: 44px!important;
+	background-position: center;
+	object-fit: cover;
+	border: 1px solid #ddd;
+	margin-right: 10px;
+}
+.media-body {
+	width: 0;
+}
+
+.float-button{
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	bottom: 65px;
+	right: 45px;
+}
+#custom-search-input{
+	padding: 3px;
+	border: solid 1px #E4E4E4;
+	border-radius: 6px;
+	background-color: #fff;
+}
+
+#custom-search-input input{
+	border: 0;
+	box-shadow: none;
+}
+
+#custom-search-input button{
+	margin: 2px 0 0 0;
+	background: none;
+	box-shadow: none;
+	border: 0;
+	color: #666666;
+	padding: 0 8px 0 10px;
+	border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+	border: 0;
+	box-shadow: none;
+	border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+	font-size: 23px;
+}
+
+
+</style>
+
+<div class="row" ng-controller="LeadCtrl">
+
+	<div class="col-md-12">
+
+		<div class="card">
+			<div class="card-header" data-background-color="orange">
+				<h4 class="title">Leads</h4>
+			</div>
+
+			<div class="card-content">
+				<table datatable="ng" class="table" style="width: 100%;">
+					<thead >
+						<th>Cod</th>
+						<th>Data e hora</th>						
+						<th>Email</th>
+					</thead>
+					<tbody>
+						<tr ng-repeat="item in listLeads">
+							<td>{{item.id_lead}} </td>
+							<td>{{item.data_hora.split(' ')[0] | date:'dd/MM/yyyy'}}<br> {{item.data_hora.split(' ')[1] | date:'h/mm'}} </td>
+							<td>{{item.email}}</td>
+						</tr>
+					</tbody>
+				</table>			
+			</div>
+		</div>
+	</div>
+</div>

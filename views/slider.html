@@ -1,0 +1,101 @@
+<script>
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip(); 
+    });
+</script>
+
+<style>
+    .custom-file-upload {
+        border: 1px solid #00bcd4;
+        display: inline-block;
+        padding: 10px 50px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: -3px;
+    }
+
+    input[type="file"] {
+        display: none;
+        font-family: inherit;
+    }
+    input[type="file"]:focus {
+        display: none;
+        font-family: inherit;
+        border: 1px solid #ffba22;    
+    }
+
+    .btn-delete{
+        /*margin-left: 40px;*/
+        border-radius: 50px;
+    }
+</style>
+    
+<div>
+
+    <!-- ADICIONAR SLIDER -->
+    <button  type="button" class="float-button btn btn-info btn-round btn-just-icon" ng-click="showFormulario()">
+        <i class="material-icons" data-toggle="tooltip" title="Adicionar Slider">add</i>
+    </button>
+    
+    <div ng-show="showForm" class="animated fadeInLeft" id="formulario" style="margin-left: 15px; margin-bottom: 50px;">
+        <div class="row">
+            <div class="col-sm-4" style="background: white; border-radius: 6px;">
+                <form>
+                    <div class="form-group">
+                        <label for="">Ordem do slider</label>
+                        <input type="text" class="form-control" ng-model="novoSlider.ordem">
+                    </div>
+                    <div class="form-group">
+                        <label class="custom-file-upload">
+                            <input type="file" id="imagemSlider"/>
+                            Adicionar Imagem
+                        </label>
+                    </div>
+                    <div class="form-group text-right">
+                        <button type="button" class="btn btn-primary" ng-click="insertSlider(novoSlider)" ng-hide="novoSlider.editando">Salvar</button>
+                        <button type="button" class="btn btn-warning" ng-click="editarSlider(novoSlider)" ng-show="novoSlider.editando">Editar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /ADICIONAR SLIDER -->
+
+    <!-- LISTA SLIDERS SALVOS -->
+    <div class="main main-raised" style="padding-bottom:40px; margin-bottom: 40px">
+
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">Slider {{texto}}</b></h4>
+            </div>
+
+            <div class="card-content col-md-2"  ng-repeat="lista in listaSlider | orderBy:'+ordem' ">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div style="text-align: center;">
+                            <img src="{{baseUrlImagem}}/slider/{{lista.imagem}}" alt="" style="width: 320px; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <div class="form-group">
+                                <label for="sel1">Ordem do slider: </label>
+                                {{lista.ordem}}
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-danger btn-sm btn-delete" ng-click="deletaSlider(lista)">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                            <button class="btn btn-warning btn-sm btn-delete" ng-click="exibirEditar(lista)">
+                                <i class="fa fa-pencil" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- /LISTA SLIDERS SALVOS -->
+
+</div>
+

@@ -1,0 +1,76 @@
+<style>
+    .custom-file-upload {
+        border: 1px solid #00bcd4;
+        display: inline-block;
+        padding: 10px 50px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: -3px;
+    }
+
+    input[type="file"] {
+        display: none;
+        font-family: inherit;
+    }
+    input[type="file"]:focus {
+        display: none;
+        font-family: inherit;
+        border: 1px solid #ffba22;    
+    }
+</style>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header" data-background-color="orange">
+                <h4 class="title">Novo Usuário</h4>
+            </div>
+            <div class="card-content">
+                <form>
+                    <div class="row">
+                        <div class="col-md-12" style="z-index: 1;">
+
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label">Nome</label>
+                                <input type="text" ng-model="novoUsuario.nome" class="form-control">
+                            </div>
+
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label">E-mail</label>
+                                <input type="email" ng-model="novoUsuario.email" class="form-control">
+                            </div>
+
+                            <div class="form-group label-floating is-empty">                                
+                                <label class="control-label">Senha</label>
+                                <input type="password" ng-model="novoUsuario.senha" class="form-control">
+                            </div>
+
+                            <div class="form-group label-floating is-empty">
+                                <label class="control-label">Confirmar Senha</label>
+                                <input type="password" ng-model="novoUsuario.confirmaSenha" class="form-control">
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <label class="custom-file-upload">
+                                    <input type="file" id="imagemUsuario" multiple/>
+                                    Adicionar Imagem
+                                </label>
+                            </div> -->
+                            <div class="row">
+                                <div class="col-sm-2 col-sm-offset-8">
+                                    <button  type="button" ng-click="insertColaborador(novoUsuario);" class="btn btn-info ">
+                                        Cadastrar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>                  
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+    </div>
+
+</div>
