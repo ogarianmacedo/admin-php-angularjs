@@ -1,36 +1,30 @@
 <?php
+$obj = json_decode(file_get_contents('php://input'), true);
 
-	$obj = json_decode(file_get_contents('php://input'), true);
+include("db_conect.php");
+$connect = new Con();
+$con = $connect->getCon();
 
-	include("db_conect.php");
-	$connect = new Con();
-	$con = $connect->getCon();
+$email = $obj['email'];
+$senha = $obj['senha'];
 
-	$email = $obj['email'];
-	$senha = $obj['senha'];
+try {
+    $con->beginTransaction();
+    $sql = $con->query("SELECT * 
+                        FROM tb_usuario
+                        WHERE email = '$email'
+                        and senha = '$senha'"
+    );
 
-	try{
+    $result = $sql->fetchAll();
 
-		$con->beginTransaction();
+    if (COUNT($result) > 0) {
+        echo json_encode($result);
+    } else {
+        echo "erro_login";
+    }
 
-		$sql= $con->query("SELECT * FROM tb_usuario WHERE email = '$email' and senha = '$senha' ");
-
-		$result = $sql->fetchAll();
-		
-		if(COUNT($result) > 0){
-
-			echo json_encode($result);
-
-		}else{
-
-			echo "deu_ruim";
-			
-		}
-
-		$con->commit();
-
-	}catch(Exception $e){
-		$con->rollback();
-	}
-
-?>
+    $con->commit();
+} catch (Exception $e) {
+    $con->rollback();
+}

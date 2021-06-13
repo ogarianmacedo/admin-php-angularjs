@@ -1,40 +1,40 @@
-<?php 
+<?php
+$obj = json_decode(file_get_contents('php://input'), true);
 
-	$obj = json_decode(file_get_contents('php://input'), true);
+include("../db_conect.php");
+$connect = new Con();
+$con = $connect->getCon();
 
-	include("../db_conect.php");
-	$connect = new Con();
-	$con  =  $connect->getCon();
+$matricula = $obj['matricula'];
 
-	$matricula = $obj['matricula'];
+$nome = $matricula['nome'];
+$email = $matricula['email'];
+$telefone = $matricula['telefone'];
+$nascimento = $matricula['nascimento'];
 
-	$nome = $matricula['nome'];
-	$rg = $matricula['rg'];
-	$camisa = $matricula['camisa'];
-	$equipe = $matricula['equipe'];
-	$percurso = $matricula['percurso'];
-	$email = $matricula['email'];
-	$telefone = $matricula['telefone'];
-	$idade = $matricula['idade'];
+try {
+    $con->beginTransaction();
 
-	try{
+    $sql = $con->exec("INSERT INTO tb_matricula (
+                                    nome,
+                                    email,
+                                    telefone,
+                                    nascimento
+                                ) VALUES (
+                                    '$nome',
+                                    '$email',
+                                    '$telefone',
+                                    '$nascimento'
+                                )"
+    );
 
-		$con->beginTransaction();
+    if ($sql) {
+        echo "cadastrado_com_sucesso";
+    } else {
+        echo "nao_cadastrou";
+    }
 
-		$sql = $con->exec("INSERT INTO tb_matricula (nome, email, telefone, idade, rg, camisa, equipe, percurso) VALUES ('$nome', '$email', '$telefone', '$idade', '$rg', '$camisa', '$equipe', '$percurso')");
-
-		if($sql){
-			echo "cadastrado_com_sucesso";
-		}else{
-			echo "nao_cadastrou";
-		}
-
-		$con->commit();
-
-	}catch(Exception $e){
-		$con->rollback();
-		var_dump($e);
-	}
-
-
-?>
+    $con->commit();
+} catch (Exception $e) {
+    $con->rollback();
+}

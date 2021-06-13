@@ -1,37 +1,35 @@
-<?php 
+<?php
+$obj = json_decode(file_get_contents('php://input'), true);
 
-	$obj = json_decode(file_get_contents('php://input'), true);
+include("../db_conect.php");
 
-	include("../db_conect.php");
+$connect = new Con();
+$con = $connect->getCon();
 
-	$connect = new Con();
-	$con = $connect->getCon();
+$video = $obj['video'];
 
-	$video = $obj['video'];
+$id_video = $video['id_video'];
+$url = $video['url'];
+$titulo = $video['titulo'];
 
-	$id_video = $video['id_video'];
-	$url = $video['url'];
-	$titulo = $video['titulo'];
+try {
+    $con->beginTransaction();
 
-	try{
+    if (!empty($id_video)) {
+        $sql = "UPDATE tb_video
+                SET url = '$url', titulo = '$titulo'
+                WHERE id_video = $id_video";
 
-		$con->beginTransaction();
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
 
-		if (!empty($id_video)) {
+        echo "alterado_com_sucesso";
+    } else {
+        echo "nao_alterou";
+    }
 
-			$sql = "UPDATE tb_video SET url = '$url', titulo = '$titulo' WHERE id_video = $id_video";
-			$stmt = $con->prepare($sql);
-			$stmt->execute();
+    $con->commit();
 
-			echo "alterado_com_sucesso";
-		}else{
-			echo "nao_alterou";
-		}
-
-		$con->commit();		
-
-	}catch(Exception $e){
-		$con->rollback();
-	}
-
-?>
+} catch (Exception $e) {
+    $con->rollback();
+}

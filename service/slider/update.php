@@ -1,38 +1,36 @@
-<?php 
+<?php
+$obj = json_decode(file_get_contents('php://input'), true);
 
-	$obj = json_decode(file_get_contents('php://input'), true);
+include("../db_conect.php");
 
-	include("../db_conect.php");
+$connect = new Con();
+$con = $connect->getCon();
 
-	$connect = new Con();
-	$con = $connect->getCon();
+$slider = $obj['slider'];
 
-	$slider = $obj['slider'];
+$id_slider = $slider['id_slider'];
+$imagem = $slider['imagem'];
+$ordem = $slider['ordem'];
 
-	$id_slider = $slider['id_slider'];
-	$imagem = $slider['imagem'];
-	$ordem = $slider['ordem'];
+try {
+    $con->beginTransaction();
 
-	try{
+    if (!empty($id_slider)) {
 
-		$con->beginTransaction();
+        $sql = "UPDATE tb_slider
+                SET imagem = '$imagem',
+                    ordem = '$ordem'
+                WHERE id_slider = $id_slider";
 
-		if (!empty($id_slider)) {
-			
-			$sql = "UPDATE tb_slider SET imagem = '$imagem', ordem = '$ordem' WHERE id_slider = $id_slider";
-			$stmt = $con->prepare($sql);
-			$stmt->execute();
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
 
-			echo "alterado_com_sucesso";
+        echo "alterado_com_sucesso";
+    } else {
+        echo "nao_alterou";
+    }
 
-		}else{
-			echo "nao_alterou";
-		}
-
-		$con->commit();
-
-	}catch(Exception $e){
-		$con->rollback();
-	}
-
-?>
+    $con->commit();
+} catch (Exception $e) {
+    $con->rollback();
+}

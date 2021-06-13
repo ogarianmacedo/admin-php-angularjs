@@ -1,6 +1,5 @@
 'use strict';
 
- angular.module('app')
- .controller('AppCtrl', ['$scope' , '$timeout', function ( $scope,  $timeout) {
-
- }]);
+angular.module('app')
+    .controller('AppCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+    }]);

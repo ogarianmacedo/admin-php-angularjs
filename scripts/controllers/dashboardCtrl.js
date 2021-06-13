@@ -1,6 +1,4 @@
 angular.module('app')
-.controller('DashboardCtrl', function($scope){
-
-	$scope.texto = "Dashboard";
-
-})
+    .controller('DashboardCtrl', function ($scope) {
+        $scope.texto = "Dashboard";
+    })

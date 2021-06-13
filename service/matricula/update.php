@@ -1,44 +1,39 @@
-<?php 
+<?php
+$obj = json_decode(file_get_contents('php://input'), true);
 
-	$obj = json_decode(file_get_contents('php://input'), true);
+include("../db_conect.php");
 
-	include("../db_conect.php");
+$connect = new Con();
+$con = $connect->getCon();
 
-	$connect = new Con();
-	$con = $connect->getCon();
+$matricula = $obj['matricula'];
 
-	$matricula = $obj['matricula'];
+$id_matricula = $matricula['id_matricula'];
+$nome = $matricula['nome'];
+$email = $matricula['email'];
+$telefone = $matricula['telefone'];
+$nascimento = $matricula['nascimento'];
 
-	$id_matricula = $matricula['id_matricula'];
-	$nome = $matricula['nome'];
-	$rg = $matricula['rg'];
-	$camisa = $matricula['camisa'];
-	$equipe = $matricula['equipe'];
-	$percurso = $matricula['percurso'];
-	$email = $matricula['email'];
-	$telefone = $matricula['telefone'];
-	$idade = $matricula['idade'];
+try {
+    $con->beginTransaction();
 
-	try{
+    if (!empty($id_matricula)) {
+        $sql = "UPDATE tb_matricula 
+                SET nome = '$nome',
+                    email = '$email',
+                    telefone = '$telefone',
+                    nascimento = '$nascimento'
+                WHERE id_matricula = $id_matricula";
 
-		$con->beginTransaction();
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
 
-		if (!empty($id_matricula)) {
-			
-			$sql = "UPDATE tb_matricula SET nome = '$nome', email = '$email', telefone = '$telefone', idade = '$idade', rg = '$rg', camisa = '$camisa', equipe = '$equipe', percurso = '$percurso' WHERE id_matricula = $id_matricula";
-			$stmt = $con->prepare($sql);
-			$stmt->execute();
+        echo "alterado_com_sucesso";
+    } else {
+        echo "nao_alterou";
+    }
 
-			echo "alterado_com_sucesso";
-
-		}else{
-			echo "nao_alterou";
-		}
-
-		$con->commit();
-
-	}catch(Exceptio $e){
-		$con->rollback();
-	}
-
-?>
+    $con->commit();
+} catch (Exception $e) {
+    $con->rollback();
+}

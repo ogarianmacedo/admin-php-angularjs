@@ -629,7 +629,7 @@ h2.title {
 }
 .sidebar[data-color="orange"] .nav li.active a,
 .off-canvas-sidebar[data-color="orange"] .nav li.active a {
-  background-color: #38b429;
+  background-color: #ff5722;
   box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
 .sidebar[data-color="red"] .nav li.active a,
@@ -3714,7 +3714,7 @@ footer .btn {
   box-shadow: 0 12px 20px -10px rgba(76, 175, 80, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(76, 175, 80, 0.2);
 }
 .card [data-background-color="orange"] {
-  background: linear-gradient(60deg, #38b429, #38b429);
+  background: linear-gradient(60deg, #FF5722, #ff501bd6);
   box-shadow: 0 12px 20px -10px rgba(255, 152, 0, 0.28), 0 4px 20px 0px rgba(0, 0, 0, 0.12), 0 7px 8px -5px rgba(255, 152, 0, 0.2);
 }
 .card [data-background-color="red"] {

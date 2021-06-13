@@ -1,354 +1,282 @@
 <style type="text/css">
+    .text-angular button {
+        padding: 5px 20px;
+        font-size: 11px;
+    }
 
-  .text-angular button{
-    padding: 5px 20px;
-    font-size: 11px;
-  }	
+    .btn-file {
+        position: relative;
+        overflow: hidden;
+        vertical-align: middle;
+    }
 
+    .btn-file > input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-size: 23px;
+        cursor: pointer;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        direction: ltr;
+    }
 
-  .btn-file {
-    position: relative;
-    overflow: hidden;
-    vertical-align: middle;
-  }
+    .fileinput {
+        display: inline-block;
+        margin-bottom: 9px;
+    }
 
-  .btn-file > input {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    font-size: 23px;
-    cursor: pointer;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    direction: ltr;
-  }
-
-  .fileinput {
-    display: inline-block;
-    margin-bottom: 9px;
-  }
-
-  .banner-footer{
+    .banner-footer {
         max-height: 300px;
-      object-fit: cover;
-      background-position: center center;
-  }
+        object-fit: cover;
+        background-position: center center;
+    }
 
-  .fileinput .form-control {
-    display: inline-block;
-    padding-top: 7px;
-    padding-bottom: 5px;
-    margin-bottom: 0;
-    vertical-align: middle;
-    cursor: text;
-  }
+    .fileinput .form-control {
+        display: inline-block;
+        padding-top: 7px;
+        padding-bottom: 5px;
+        margin-bottom: 0;
+        vertical-align: middle;
+        cursor: text;
+    }
 
-  .fileinput .thumbnail {
-    display: inline-block;
-    margin-bottom: 10px;
-    overflow: hidden;
-    text-align: center;
-    vertical-align: middle;
-    max-width: 360px;
-  }
-  .fileinput .thumbnail.img-circle {
-    border-radius: 50%;
-    max-width: 100px;
-  }
+    .fileinput .thumbnail {
+        display: inline-block;
+        margin-bottom: 10px;
+        overflow: hidden;
+        text-align: center;
+        vertical-align: middle;
+        max-width: 360px;
+    }
 
-  .fileinput .thumbnail > img {
-    max-height: 100%;
-  }
+    .fileinput .thumbnail.img-circle {
+        border-radius: 50%;
+        max-width: 100px;
+    }
 
-  .fileinput .btn {
-    vertical-align: middle;
-  }
+    .fileinput .thumbnail > img {
+        max-height: 100%;
+    }
 
-  .fileinput-exists .fileinput-new,
-  .fileinput-new .fileinput-exists {
-    display: none;
-  }
+    .fileinput .btn {
+        vertical-align: middle;
+    }
 
-  .fileinput-inline .fileinput-controls {
-    display: inline;
-  }
+    .fileinput-exists .fileinput-new,
+    .fileinput-new .fileinput-exists {
+        display: none;
+    }
 
-  .fileinput-filename {
-    display: inline-block;
-    overflow: hidden;
-    vertical-align: middle;
-  }
+    .fileinput-inline .fileinput-controls {
+        display: inline;
+    }
 
-  .form-control .fileinput-filename {
-    vertical-align: bottom;
-  }
+    .fileinput-filename {
+        display: inline-block;
+        overflow: hidden;
+        vertical-align: middle;
+    }
 
-  .fileinput.input-group {
-    display: table;
-  }
+    .form-control .fileinput-filename {
+        vertical-align: bottom;
+    }
 
-  .fileinput.input-group > * {
-    position: relative;
-    z-index: 2;
-  }
+    .fileinput.input-group {
+        display: table;
+    }
 
-  .fileinput.input-group > .btn-file {
-    z-index: 1;
-  }
+    .fileinput.input-group > * {
+        position: relative;
+        z-index: 2;
+    }
 
-  .fileinput-new.input-group .btn-file,
-  .fileinput-new .input-group .btn-file {
-    border-radius: 0 4px 4px 0;
-  }
+    .fileinput.input-group > .btn-file {
+        z-index: 1;
+    }
 
-  .fileinput-new.input-group .btn-file.btn-xs,
-  .fileinput-new .input-group .btn-file.btn-xs,
-  .fileinput-new.input-group .btn-file.btn-sm,
-  .fileinput-new .input-group .btn-file.btn-sm {
-    border-radius: 0 3px 3px 0;
-  }
+    .fileinput-new.input-group .btn-file,
+    .fileinput-new .input-group .btn-file {
+        border-radius: 0 4px 4px 0;
+    }
 
-  .fileinput-new.input-group .btn-file.btn-lg,
-  .fileinput-new .input-group .btn-file.btn-lg {
-    border-radius: 0 6px 6px 0;
-  }
+    .fileinput-new.input-group .btn-file.btn-xs,
+    .fileinput-new .input-group .btn-file.btn-xs,
+    .fileinput-new.input-group .btn-file.btn-sm,
+    .fileinput-new .input-group .btn-file.btn-sm {
+        border-radius: 0 3px 3px 0;
+    }
 
-  .form-group.has-warning .fileinput .fileinput-preview {
-    color: #ff9800;
-  }
+    .fileinput-new.input-group .btn-file.btn-lg,
+    .fileinput-new .input-group .btn-file.btn-lg {
+        border-radius: 0 6px 6px 0;
+    }
 
-  .form-group.has-warning .fileinput .thumbnail {
-    border-color: #ff9800;
-  }
+    .form-group.has-warning .fileinput .fileinput-preview {
+        color: #ff9800;
+    }
 
-  .form-group.has-error .fileinput .fileinput-preview {
-    color: #f44336;
-  }
+    .form-group.has-warning .fileinput .thumbnail {
+        border-color: #ff9800;
+    }
 
-  .form-group.has-error .fileinput .thumbnail {
-    border-color: #f44336;
-  }
+    .form-group.has-error .fileinput .fileinput-preview {
+        color: #f44336;
+    }
 
-  .form-group.has-success .fileinput .fileinput-preview {
-    color: #4caf50;
-  }
+    .form-group.has-error .fileinput .thumbnail {
+        border-color: #f44336;
+    }
 
-  .form-group.has-success .fileinput .thumbnail {
-    border-color: #4caf50;
-  }
+    .form-group.has-success .fileinput .fileinput-preview {
+        color: #4caf50;
+    }
 
-  .input-group-addon:not(:first-child) {
-    border-left: 0;
-  }
+    .form-group.has-success .fileinput .thumbnail {
+        border-color: #4caf50;
+    }
 
-  .thumbnail {
-    border: 0 none;
-    border-radius: 0;
-    padding: 0;
-  }
+    .input-group-addon:not(:first-child) {
+        border-left: 0;
+    }
 
-  .img-p img{
-    height:  173px;   width: 100px;
-    object-fit: cover;
-  }
+    .thumbnail {
+        border: 0 none;
+        border-radius: 0;
+        padding: 0;
+    }
 
-  .img-g img{
-    height: 355px;    width: 250px;
-    object-fit: cover;
-  }
+    .img-p img {
+        height: 173px;
+        width: 100px;
+        object-fit: cover;
+    }
 
-  .img-l img{
-    height: 300px;    width: 593px;
-    object-fit: cover;
-  }
+    .img-g img {
+        height: 355px;
+        width: 250px;
+        object-fit: cover;
+    }
 
+    .img-l img {
+        height: 300px;
+        width: 593px;
+        object-fit: cover;
+    }
 </style>
 
 <div class="wrapper" ng-controller="AdmCtrl">
-
-  <div class="sidebar" data-color="orange" data-image="upload/slider/logo-w.png" style="background: #f5f5f5!important;">
-    <div class="logo">
-      <div class="user" >
-        
-        <div class="info" style="margin-right: -185px;">
-          <a href="">
-            <img src="{{baseUrlImagem}}/usuario/{{usuario.imagem}}" alt="" style="width: 16%; border-radius: 100%; margin-left: 55px;">            
-          </a>
+    <div class="sidebar" data-color="blue" data-image="upload/slider/logo-w.png"
+         style="background: #f5f5f5 !important; width: 260px !important;">
+        <div class="logo">
+            <div class="user text-center">
+                <div class="info">
+                    <a href="">
+                        <img src="{{baseUrlImagem}}/usuario/{{usuario.imagem}}" alt=""
+                             style="width: 30%; border-radius: 100%;">
+                    </a>
+                </div>
+                <br>
+                <div class="info">
+                    <a href=''>
+                        <span style="font-weight: 600">
+                            {{usuario.nome}}
+                        </span>
+                    </a>
+                    <a href=''>
+                        <small>
+                            <br>{{usuario.email}}
+                        </small>
+                    </a>
+                </div>
+            </div>
         </div>
-        <br>
-        <div class="info">
-          <a href='' style="padding-left: 40px;">
-            <span style="font-weight: 600">
-              {{usuario.nome}}
-            </span>
-          </a>
-          <a href='' style="padding-left: 40px;">
-            <small>
-              <br>{{usuario.email}}
-            </small>
-          </a>
-        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li ng-class="{active: routeName == 'adm.dashboard'}">
+                    <a ui-sref="adm.dashboard">
+                        <i class="material-icons">dashboard</i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
 
-      </div>
+                <li ng-class="{active: routeName == 'adm.matricula'}">
+                    <a ui-sref="adm.matricula">
+                        <i class="material-icons">plus_one</i>
+                        <p>Matrícula</p>
+                    </a>
+                </li>
+
+                <li ng-class="{active: routeName == 'adm.contato'}">
+                    <a ui-sref="adm.contato">
+                        <i class="material-icons">local_post_office</i>
+                        <p>Contato</p>
+                    </a>
+                </li>
+
+                <li ng-class="{active: routeName == 'adm.slider'}">
+                    <a ui-sref="adm.slider">
+                        <i class="material-icons">perm_media</i>
+                        <p>Slider</p>
+                    </a>
+                </li>
+
+                <li ng-class="{active: routeName == 'adm.video'}">
+                    <a ui-sref="adm.video">
+                        <i class="material-icons">videocam</i>
+                        <p>Vídeos</p>
+                    </a>
+                </li>
+
+                <li ng-class="{active: routeName == 'adm.usuario'}">
+                    <a ui-sref="adm.usuario">
+                        <i class="material-icons">assignment_ind</i>
+                        <p>Usuários</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 
-    <div class="sidebar-wrapper">
-      <ul class="nav">
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-absolute">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Bem-vindo</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="javascript:;" ng-click="sairDashboard()">
+                                Sair
+                            </a>
+                        </li>
+                    </ul>
+                    <ul class="nav hidden-md hidden-lg">
+                        <li ng-class="{active: routeName == 'adm.usuario'}">
+                            <a ui-sref="adm.usuario">
+                                <i class="material-icons">assignment_ind</i>
+                                <p>Usuário</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
-        <!-- <li ng-class="{active: routeName == 'adm.dashboard'}">
-          <a ui-sref="adm.dashboard">
-            <i class="material-icons">dashboard</i>
-            <p>Dashboard</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.lead'}">
-          <a ui-sref="adm.lead">
-            <i class="material-icons">view_quilt</i>
-            <p>Leads</p>
-          </a>
-        </li> -->
-      
-        <li ng-class="{active: routeName == 'adm.matricula'}">
-          <a ui-sref="adm.matricula">
-            <i class="material-icons">plus_one</i>
-            <p>Inscrições</p>
-          </a>
-        </li>
-
-        <!-- <li ng-class="{active: routeName == 'adm.contato'}">
-          <a ui-sref="adm.contato">
-            <i class="material-icons">local_post_office</i>
-            <p>Contato</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.slider'}">
-          <a ui-sref="adm.slider">
-            <i class="material-icons">perm_media</i>
-            <p>Slider</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.galeriaEstrutura'}">
-          <a ui-sref="adm.galeriaEstrutura">
-            <i class="material-icons">collections</i>
-            <p>Galeria</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.evento'}">
-          <a ui-sref="adm.evento">
-            <i class="material-icons">cake</i>
-            <p>Eventos</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.noticia'}">
-          <a ui-sref="adm.noticia">
-            <i class="material-icons">public</i>
-            <p>Notícias</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.cardapio'}">
-          <a ui-sref="adm.cardapio">
-            <i class="material-icons">room_service</i>
-            <p>Cardápio</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.calendario'}">
-          <a ui-sref="adm.calendario">
-            <i class="material-icons">today</i>
-            <p>Calendário Escolar</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.curriculo'}">
-          <a ui-sref="adm.curriculo">
-            <i class="material-icons">picture_as_pdf</i>
-            <p>Currículo</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.video'}">
-          <a ui-sref="adm.video">
-            <i class="material-icons">videocam</i>
-            <p>Vídeos</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.rotina'}">
-          <a ui-sref="adm.rotina">
-            <i class="material-icons">content_paste</i>
-            <p>Rotina</p>
-          </a>
-        </li> -->
-
-        <!-- <li ng-class="{active: routeName == 'adm.senha'}">
-          <a ui-sref="adm.senha">
-            <i class="material-icons">vpn_key</i>
-            <p>Alterar Senha</p>
-          </a>
-        </li> -->
-               
-        <li ng-class="{active: routeName == 'adm.usuario'}">
-          <a ui-sref="adm.usuario">
-            <i class="material-icons">assignment_ind</i>
-            <p>Usuários</p>
-          </a>
-        </li>
-
-      </ul>
-    </div>
-  </div>
-
-  <div class="main-panel">
-    <nav class="navbar navbar-default navbar-absolute">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Bem-vindo</a>
+        <div class="content">
+            <div class="container-fluid" ui-view></div>
         </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            <li>
-              <a href="javascript:;" ng-click="sairDashboard()">
-                Sair
-              </a>
-            </li>
-          </ul>
-
-          <ul class="nav hidden-md hidden-lg">
-           <li ng-class="{active: routeName == 'adm.lead'}">
-            <a ui-sref="adm.lead">
-              <i class="material-icons">dashboard</i>
-              <p>Leads</p>
-            </a>
-          </li>
-      
-          <li ng-class="{active: routeName == 'adm.usuario'}">
-            <a ui-sref="adm.usuario">
-              <i class="material-icons">assignment_ind</i>
-              <p>Usuário</p>
-            </a>
-          </li>
-
-        </ul>
-      </ul>
     </div>
-  </div>
-</nav>
-
-<div class="content">
-  <div class="container-fluid" ui-view></div>
 </div>
+
+

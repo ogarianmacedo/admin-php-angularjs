@@ -1,102 +1,116 @@
 <script>
-	$(document).ready(function(){
-		$('[data-toggle="tooltip"]').tooltip(); 
-	});
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
 
 <style>
-	.custom-file-upload {
-		border: 1px solid #00bcd4;
-		display: inline-block;
-		padding: 10px 50px;
-		cursor: pointer;
-		border-radius: 4px;
-		margin-top: -3px;
-	}
+    .custom-file-upload {
+        border: 1px solid #00bcd4;
+        display: inline-block;
+        padding: 10px 50px;
+        cursor: pointer;
+        border-radius: 4px;
+        margin-top: -3px;
+    }
 
-	input[type="file"] {
-		display: none;
-		font-family: inherit;
-	}
-	input[type="file"]:focus {
-		display: none;
-		font-family: inherit;
-		border: 1px solid #ffba22;    
-	}
+    input[type="file"] {
+        display: none;
+        font-family: inherit;
+    }
+
+    input[type="file"]:focus {
+        display: none;
+        font-family: inherit;
+        border: 1px solid #ffba22;
+    }
 </style>
 
 <div>
-
-	<!-- ADICIONAR SLIDER -->
-    <button  type="button" class="float-button btn btn-info btn-round btn-just-icon" ng-click="showFormulario()">
-        <i class="material-icons" data-toggle="tooltip" title="Adicionar Calendário">add</i>
-    </button>
-    
-    <div ng-show="showForm" class="animated fadeInLeft" id="formulario" style="margin-left: 15px; margin-bottom: 50px;">
-        <div class="row">
-            <div class="col-sm-4" style="background: white; border-radius: 6px;">
-                <div class="card-content">
-					<form action="">
-						<div class="form-group">
-							<label for="">Nome</label>
-							<input type="text" class="form-control" ng-model="novoContato.nome">
-						</div>
-						<div class="form-group">
-							<label for="">E-mail</label>
-							<input type="email" class="form-control" ng-model="novoContato.email">
-						</div>
-						<div class="form-group">
-							<label for="">Telefone</label>
-							<input type="text" class="form-control" ng-model="novoContato.telefone">
-						</div>
-						<div class="form-group">
-							<label for="">Mensagem</label>
-							<input type="text" class="form-control" ng-model="novoContato.mensagem">
-						</div>
-						<button type="button" class="btn btn-primary" ng-click="insertContato(novoContato)" ng-hide="novoContato.editando">Salvar</button>
-						<button type="button" class="btn btn-warning" ng-click="editarContato(novoContato)" ng-show="novoContato.editando">Editar</button>
-					</form> 
-				</div>
+    <div class="main main-raised">
+        <div class="card">
+            <div class="card-header" data-background-color="blue">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="title">{{texto}}</b></h4>
+                    </div>
+                    <div class="col-md-6 text-right">
+                        <button type="button" class="float-button btn btn-primary btn-round btn-just-icon"
+                            ng-click="showFormulario()" style="margin-top: -5px; margin-bottom: 0px;">
+                            <i class="material-icons" data-toggle="tooltip" title="Adicionar Calendário">add</i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-content">
+                <table class="table">
+                    <thead class="text-warning">
+                        <tr>
+                            <th><a>Nome</a></th>
+                            <th><a>E-mail</a></th>
+                            <th><a>Telefone</a></th>
+                            <th><a>Mensagem</a></th>
+                            <th class="print" width="150"><a>Ações</a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="cont in listagemCont">
+                            <td>{{cont.nome}}</td>
+                            <td>{{cont.email}}</td>
+                            <td>{{cont.telefone}}</td>
+                            <td>{{cont.mensagem}}</td>
+                            <td class="print">
+                                <a href="" ng-click="deletarCont(cont)">Excluir</a>
+                                |
+                                <a href="" ng-click="exibirEditar(cont)">Editar</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
-    <!-- /ADICIONAR SLIDER -->
 
-	<div class="main main-raised" style="padding-bottom:40px; margin-bottom: 40px">
+    <div ng-show="showForm" class="animated fadeInLeft" id="formulario" style="margin-left: 15px; margin-bottom: 50px;">
+        <form action="">
+            <div class="row" style="background: white; border-radius: 6px;">
+                <h3 style="margin-left: 10px;">Cadastrar Contato</h3>
 
-		<div class="card">
-			<div class="card-header" data-background-color="orange">
-				<h4 class="title">{{texto}}</b></h4>
-			</div>
-			
-			<div class="card-content">
-				<table class="table">
-					<thead class="text-warning">
-						<tr>
-							<th>Nome</th>
-							<th>E-mail</th>
-							<th>Telefone</th>
-							<th>Mensagem</th>
-							<th style="text-align: center">Ações</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr ng-repeat="cont in listagemCont">
-							<td>{{cont.nome}}</td>
-							<td>{{cont.email}}</td>
-							<td>{{cont.telefone}}</td>
-							<td>{{cont.mensagem}}</td>
-							<td width="250px;" style="text-align: center;">
-								<a href="" ng-click="deletarCont(cont)">Excluir</a>
-								 | 
-								<a href="" ng-click="exibirEditar(cont)">Editar</a>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		
-		</div>
-		
-	</div>
+                <div class="col-sm-6">
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label>Nome</label>
+                            <input type="text" class="form-control" ng-model="novoContato.nome">
+                        </div>
+                        <div class="form-group">
+                            <label>E-mail</label>
+                            <input type="email" class="form-control" ng-model="novoContato.email">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="card-content">
+                        <div class="form-group">
+                            <label>Telefone</label>
+                            <input type="text" class="form-control" ng-model="novoContato.telefone">
+                        </div>
+                        <div class="form-group">
+                            <label>Mensagem</label>
+                            <input type="text" class="form-control" ng-model="novoContato.mensagem">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-right" style="margin-right: 20px;">
+                    <button type="button" class="btn btn-primary" ng-click="insertContato(novoContato)"
+                        ng-hide="novoContato.editando">Salvar
+                    </button>
+                    <button type="button" class="btn btn-warning" ng-click="editarContato(novoContato)"
+                        ng-show="novoContato.editando">Editar
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
